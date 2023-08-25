@@ -7,7 +7,7 @@
     height: 100vh;
     width: 100vw;
     top: 0;
-    left: 100vw;
+    left: 100%;
     display: grid;
     grid-template-columns: 4fr 1fr;
     border: 1px dashed white;
@@ -19,9 +19,9 @@
     cursor: pointer;
 }
 
-/* #nav>img:hover + .routes {
+#nav>img:hover + .routes {
     left: 0;
-} */
+}
 
 .routes img {
     border: 1px solid white;
