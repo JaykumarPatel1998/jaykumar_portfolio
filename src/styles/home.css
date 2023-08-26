@@ -1,0 +1,42 @@
+#container {
+    position: relative;
+    font-family: monospace;
+}
+
+.aboutme {
+    display: flex;
+    flex-direction: column;
+    /* outline: auto; */
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border: 1px dashed rgba(256, 256, 256, 0.5);
+}
+
+.name {
+    margin-block: 1rem;
+    padding: 1rem;
+    font-size: 2rem;
+    /* border: 1px dashed rgba(256, 256, 256, 0.5); */
+    font-family: monospace;
+    line-height: 1.7rem;
+    text-align: center;
+}
+
+.desc {
+    margin-block: 1rem;
+    margin-inline: 0.5rem;
+    font-size: 0.65rem;
+    padding: 1rem;
+    color: rgba(256, 256, 256, 0.5);
+    text-indent: 1rem;
+    word-spacing: 0.25rem;
+    /* border: 1px dashed rgba(256, 256, 256, 0.5); */
+    word-wrap: break-word;
+}
+
+.codesvg {
+    margin-block: 1rem;
+    padding: 1rem;
+    /* border: 1px dashed rgba(256, 256, 256, 0.5); */
+}
