@@ -2,11 +2,6 @@
 import "@styles/globals.css"
 import { createRef, useEffect, useRef } from "react"
 
-export const metadata = {
-  title: "jay-portfolio-nextjs",
-  description: "This is a personla website portfolio created in next js and deployed on aws amplify"
-}
-
 const RootLayout = ({ children }) => {
 
   const canvasRef = createRef()
