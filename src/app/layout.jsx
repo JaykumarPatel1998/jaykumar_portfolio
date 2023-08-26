@@ -21,7 +21,7 @@ const RootLayout = ({ children }) => {
     canvas.width = innerWidth
     canvas.height = innerHeight
 
-    const radiusInRange = (min, max) => {
+    const intInRange = (min, max) => {
       return Math.floor(Math.random() * (max - min + 1) + min)
     }
 
@@ -44,37 +44,36 @@ const RootLayout = ({ children }) => {
     })
 
     // Objects
-    class Particle {
-      constructor(x, y, radius, color) {
-        this.x = x
-        this.y = y
-        this.radius = radius
+    class Line {
+      constructor(x1, y1, x2, y2, thickness, color) {
+        this.x1 = x1
+        this.y1 = y1
+        this.x2 = x2
+        this.y2 = y2
+        this.thickness = thickness
         this.color = color
-        this.radians = Math.random() * Math.PI * 2
         this.velocity = 0.05
-        this.pathRadius = radiusInRange(50, 120)
-        this.lastMouse = { x: x, y: y }
       }
 
-      update() {
-        const lastPoint = { x: this.x, y: this.y }
-        this.radians += this.velocity;
+      // update() {
+      //   const lastPoint = { x: this.x, y: this.y }
+      //   this.radians += this.velocity;
 
-        //drag effect
-        this.lastMouse.x += (mouse.x - this.lastMouse.x) * 0.05
-        this.lastMouse.y += (mouse.y - this.lastMouse.y) * 0.05
+      //   //drag effect
+      //   this.lastMouse.x += (mouse.x - this.lastMouse.x) * 0.05
+      //   this.lastMouse.y += (mouse.y - this.lastMouse.y) * 0.05
 
-        this.x = this.lastMouse.x + Math.cos(this.radians) * this.pathRadius;
-        this.y = this.lastMouse.y + Math.sin(this.radians) * this.pathRadius;
-        this.draw(lastPoint);
-      }
+      //   this.x = this.lastMouse.x + Math.cos(this.radians) * this.pathRadius;
+      //   this.y = this.lastMouse.y + Math.sin(this.radians) * this.pathRadius;
+      //   this.draw(lastPoint);
+      // }
 
-      draw(lastPoint) {
+      draw() {
         c.beginPath()
         c.strokeStyle = this.color
         c.lineWidth = this.radius
-        c.moveTo(lastPoint.x, lastPoint.y)
-        c.lineTo(this.x, this.y)
+        c.moveTo(this.x1, this.y1)
+        c.lineTo(this.x2, this.y2)
         c.stroke()
         c.closePath()
       }
@@ -82,24 +81,43 @@ const RootLayout = ({ children }) => {
     }
 
     // Implementation
-    let particles
+    let linesX
+    let linesY
     function init() {
-      particles = []
+      linesX = []
+      linesY = []
+      let gridsize = 5;
+      let xIncrement = canvas.width/gridsize
+      let yIncrement = canvas.height/gridsize
+      console.log(xIncrement)
 
-      for (let i = 0; i < 50; i++) {
-        const radius = Math.random() * 2 + 1;
-        particles.push(new Particle(canvas.width / 2, canvas.height / 2, radius, 'rgba(255,255,255,0.3)'))
+      let xpos = 0
+      let ypos = 0
+      for (let i = 0; i < gridsize; i++) {
+        const thickness = Math.random() * 1 + 1;
+        linesX.push(new Line(xpos, 0, xpos, canvas.height, thickness, 'rgb(255,255,255, 0.25)'))
+        xpos += xIncrement
+      }
+
+      for (let i = 0; i < gridsize; i++) {
+        const thickness = Math.random() * 1 + 1;
+        linesY.push(new Line(0, ypos, canvas.width, ypos, thickness, 'rgb(255,255,255, 0.25)'))
+        ypos += yIncrement
       }
     }
-
     // Animation Loop
     function animate() {
       requestAnimationFrame(animate)
-      c.fillStyle = 'rgba(0,0,0,0.09)'
+      c.fillStyle = 'rgb(0,0,0)'
       c.fillRect(0, 0, canvas.width, canvas.height)
+      // c.clearRect(0,0,canvas.width,canvas.height)
 
-      particles.forEach(particle => {
-        particle.update()
+      linesX.forEach(line => {
+        line.draw()
+      })
+
+      linesY.forEach(line => {
+        line.draw()
       })
     }
 

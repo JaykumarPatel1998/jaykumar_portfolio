@@ -1,12 +1,10 @@
 import Footer from "@components/Footer"
-import Navbar from "@components/Navbar"
 import CODESVG from "@components/svg"
 import "@styles/home.css"
 
 const Home = () => {
     return (
         <div id="container">
-            <Navbar />
             <div className="aboutme">
                 <h1 className="name">Jaykumar Patel | Full Stack developer 💻
                 </h1>
