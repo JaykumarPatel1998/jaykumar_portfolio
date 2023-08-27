@@ -3,12 +3,13 @@
     font-family: monospace;
 }
 
-.aboutme {
+.aboutme, .techstack, .experience {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     align-items: center;
+    padding-inline: 2rem;
 }
 
 .name {
@@ -21,12 +22,12 @@
 }
 
 .desc {
+    text-align: start;
     margin-block: 1rem;
     margin-inline: 0.5rem;
     font-size: 0.65rem;
     padding: 1rem;
     color: rgba(256, 256, 256, 0.5);
-    text-indent: 1rem;
     word-spacing: 0.25rem;
     word-wrap: break-word;
 }
@@ -34,4 +35,28 @@
 .codesvg {
     margin-block: 1rem;
     padding: 1rem;
+    text-align: center;
+}
+
+.canvas1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+em {
+    margin-inline-end: 1rem;
+    background-color: black;
+    padding: 0.25rem;
+}
+span {
+    margin: 1rem;
+    background-color: black;
+    padding: 0.25rem;
+}
+
+@media (min-width: 1250px) {
+    .desc {
+        font-size: 1rem;
+    }
 }
