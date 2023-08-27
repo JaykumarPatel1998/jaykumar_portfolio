@@ -3,7 +3,7 @@
     font-family: monospace;
 }
 
-.aboutme, .techstack, .experience {
+.aboutme, .techstack, .experience, .education, .connectWithMe {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,7 +27,7 @@
     margin-inline: 0.5rem;
     font-size: 0.65rem;
     padding: 1rem;
-    color: rgba(256, 256, 256, 0.5);
+    color: rgba(256, 256, 256, 0.65);
     word-spacing: 0.25rem;
     word-wrap: break-word;
 }
@@ -51,8 +51,14 @@ em {
 }
 span {
     margin: 1rem;
-    background-color: black;
-    padding: 0.25rem;
+    display: block;
+    padding: 0.45rem;
+    border: 2px dashed #91b9bc;
+}
+
+.desc img {
+    margin-inline: 1rem;
+    cursor: pointer;
 }
 
 @media (min-width: 1250px) {
